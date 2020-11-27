@@ -21,18 +21,20 @@ public class QuickSortDemo {
         int pivot = arr[(left + right) / 2];
         int temp;
         while (l < r) {
-
+            // 左游标 从左开始，一直找到比基准值小的元素，记下index
             while (arr[l] > pivot) {
                 l++;
             }
+            // 右游标 从右开始，一直找到比基准值大的元素，记下index
             while (arr[r] < pivot) {
                 r--;
             }
 
+            // 结束查找后 左index>右，退出
             if (l >= r) {
                 break;
             }
-            // 交换
+            // 左右交换，小的到左边，大的到基准右边
             temp = arr[l];
             arr[l] = arr[r];
             arr[r] = temp;
