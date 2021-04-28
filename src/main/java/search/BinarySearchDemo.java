@@ -15,11 +15,19 @@ public class BinarySearchDemo {
         System.out.println("位置为:" + index);
     }
 
+    /**
+     * 递归查找
+     * 
+     * @param arr
+     * @param left
+     * @param right
+     * @param value
+     * @return
+     */
     public static int binarySearch(int[] arr, int left, int right, int value) {
         if (left > right) {
             return -1;
         }
-
         int mid = (left + right) / 2;
         if (value > arr[mid]) {
             return binarySearch(arr, mid + 1, right, value);
@@ -28,6 +36,25 @@ public class BinarySearchDemo {
         } else {
             return mid;
         }
-
     }
+
+    // 非递归
+    public static int binarySearch2(int[] arr, int left, int right, int value) {
+        if (left > right) {
+            return -1;
+        }
+
+        while (left < right) {
+            int mid = (left + right) / 2;
+            if (arr[mid] == value) {
+                return mid;
+            } else if (arr[mid] < value) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return -1;
+    }
+
 }
